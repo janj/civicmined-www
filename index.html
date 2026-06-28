@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Civic Mined — AI-powered civic data, city by city</title>
+  <meta name="description" content="Ask plain-English questions about your local government and get cited answers drawn from official public records. Live for Petaluma, Quincy, and Santa Rosa." />
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="Civic Mined" />
+  <meta property="og:description" content="AI-powered civic data platform. Ask plain-English questions about your local government and get cited answers from official public records." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://civicmined.org" />
+  <meta property="og:image" content="https://civicmined.org/assets/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/png/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/png/icon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/png/icon-180.png" />
+
+  <style>
+    :root {
+      --bg: #0f1729;
+      --bg-soft: #16213a;
+      --card: #1b2540;
+      --border: #2a3656;
+      --text: #e8ecf5;
+      --muted: #9aa6c2;
+      --gold: #c8a84b;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(1200px 600px at 50% -10%, #1d2a4d 0%, transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrap {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 80px 0 48px;
+      text-align: center;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .mark .glyph {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: block;
+    }
+    .mark .word {
+      font-size: 22px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .mark .word b { color: var(--gold); font-weight: 600; }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.12;
+      margin: 0 auto 18px;
+      max-width: 18ch;
+      font-weight: 700;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: clamp(16px, 2.4vw, 19px);
+      line-height: 1.6;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .cities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin: 12px 0 8px;
+    }
+    .city {
+      --accent: var(--gold);
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .city::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--accent);
+    }
+    .city:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px -12px rgba(0,0,0,.6);
+    }
+    .city .name {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+    .city .place {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .city .go {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .city .go svg { transition: transform .15s ease; }
+    .city:hover .go svg { transform: translateX(3px); }
+
+    .features {
+      margin: 56px 0 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 28px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .features h3 {
+      color: var(--text);
+      font-size: 15px;
+      margin: 0 0 6px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 48px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 520px) {
+      header { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="mark">
+        <img class="glyph" src="/assets/icon-app.svg" width="48" height="48" alt="Civic Mined logo" />
+        <span class="word">Civic&nbsp;<b>Mined</b></span>
+      </div>
+      <h1>Your local government, finally searchable.</h1>
+      <p class="lede">
+        Ask plain-English questions about your city and get cited answers drawn
+        from official public records — votes, budgets, meetings, permits, and more.
+      </p>
+    </header>
+
+    <main>
+      <section class="cities" aria-label="Live cities">
+        <a class="city" style="--accent:#c8a84b" href="https://petaluma.civicmined.org">
+          <p class="name">Petaluma Civic</p>
+          <p class="place">Petaluma, California</p>
+          <span class="go">Explore
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="city" style="--accent:#3f6fc0" href="https://quincy.civicmined.org">
+          <p class="name">Quincy Civic</p>
+          <p class="place">Quincy, Massachusetts</p>
+          <span class="go">Explore
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="city" style="--accent:#2aa0aa" href="https://santarosa.civicmined.org">
+          <p class="name">Santa Rosa Civic</p>
+          <p class="place">Santa Rosa, California</p>
+          <span class="go">Explore
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </section>
+
+      <section class="features">
+        <div>
+          <h3>Cited answers</h3>
+          Every answer links back to the official record it came from — no black box.
+        </div>
+        <div>
+          <h3>Votes &amp; budgets</h3>
+          Track how council members voted and where public money goes.
+        </div>
+        <div>
+          <h3>Meetings &amp; permits</h3>
+          Search transcripts, agenda items, and development permits in seconds.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Civic Mined — AI-powered civic data, built city by city.<br />
+      Want your city covered? <a href="mailto:janjirout@petalumacivic.org">Get in touch.</a>
+    </footer>
+  </div>
+</body>
+</html>
