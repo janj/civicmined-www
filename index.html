@@ -92,7 +92,7 @@
 
     .cities {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       margin: 12px 0 8px;
     }
@@ -168,6 +168,7 @@
 
     @media (max-width: 520px) {
       header { padding-top: 56px; }
+      .cities { grid-template-columns: 1fr; }
     }
   </style>
 </head>
